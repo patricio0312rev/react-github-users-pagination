@@ -12,9 +12,7 @@ export const useFetch = () => {
         const data = await response.json();
 
         // Paginacion
-        paginate(data);
-
-        setData(data);
+        setData(paginate(data));
         setLoading(false);
     }
 

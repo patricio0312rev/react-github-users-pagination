@@ -1,10 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFetch } from './hooks/useFetch';
 import Follower from './components/follower.component';
+import { useEffect } from 'react';
 
 function App() {
   const { loading, data } = useFetch();
+  const [page, setPage] = useState(0);
+  const [followers, setFollowers] = useState([]);
+
+  useEffect(() => {
+    if(loading) return;
+    setFollowers(data[page]);
+  }, [loading]); // just when loading finishes
   
   return (
     <main>
@@ -16,7 +24,7 @@ function App() {
       <section className='followers'>
         <div className='container'>
           {
-            data.map((follower) => {
+            followers.map((follower) => {
               return <Follower key={follower.id} {...follower} />
             })
           }
