@@ -5,7 +5,7 @@ import Follower from './components/follower.component';
 
 function App() {
   const { loading, data } = useFetch();
-  console.log(data);
+  
   return (
     <main>
       <div className='section-title'>
